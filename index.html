@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНО «Территория детства»</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-blue {
+            background-color: #e0f2fe;
+        }
+
+        .bg-custom-emerald {
+            background-color: #10b981;
+        }
+
+        .bg-custom-sky {
+            background-color: #0ea5e9;
+        }
+
+        .dark .bg-dark-custom {
+            background-color: #1e293b;
+        }
+
+        .dark .text-dark-custom {
+            color: #f8fafc;
+        }
+
+        .dark .bg-dark-emerald {
+            background-color: #047857;
+        }
+
+        .dark .bg-dark-sky {
+            background-color: #0369a1;
+        }
+
+        .gallery-overlay {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .aspect-ratio {
+            aspect-ratio: 16/9;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="">
+    <div :class="{ 'dark': isDarkTheme }">
+        <nav class="sticky top-0 z-[98] p-4 border-b bg-white dark:bg-dark-custom">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="android-chrome-192x192.png" alt="Logo" class="h-10">
+                    <div class="text-xl font-bold dark:text-dark-custom">Территория детства</div>
+                </div>
+                <ul class="hidden md:flex space-x-6">
+                    <li v-for="(item, index) in navItems" :key="index">
+                        <a :href="'#'+item.id" class="hover:opacity-80 transition dark:text-dark-custom">{{ item.title
+                            }}</a>
+                    </li>
+                </ul>
+                <div class="flex items-center space-x-4">
+                    <a href="https://vk.com/club211312608" class="hover:opacity-80 text-2xl" title="Группа в ВК"><i
+                            class="fa-brands fa-vk"></i></a>
+                    <a href="https://t.me/territoria27detstva" class="hover:opacity-80 text-2xl" title="Канал в ТГ"><i
+                            class="fa-brands fa-telegram"></i></a>
+                    <a href="mailto:mvdrussia18@gmail.com" class="hover:opacity-80 text-2xl"
+                       title="Написать нам e-mail"><i
+                            class="fa-regular fa-envelope"></i></a>
+                    <!--                    <button @click="toggleTheme" class="p-2 rounded-full dark:text-dark-custom text-xl">-->
+                    <!--                        <i :class="isDarkTheme ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"></i>-->
+                    <!--                    </button>-->
+                    <!--                    <button @click="toggleMenu" class="md:hidden dark:text-dark-custom text-xl">-->
+                    <!--                        <i class="fa-solid fa-bars"></i>-->
+                    <!--                    </button>-->
+                </div>
+            </div>
+            <div v-show="isMenuOpen" class="md:hidden absolute w-full bg-white dark:bg-dark-custom z-10">
+                <ul class="py-4">
+                    <li v-for="(item, index) in navItems" :key="index" class="py-2 px-4">
+                        <a :href="'#'+item.id" class="block hover:opacity-80 dark:text-dark-custom">{{ item.title }}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="hero" class="relative h-[600px]">
+            <div class="absolute inset-0 bg-[url('./img/hero.png')] bg-cover bg-center opacity-50 blur-sm"></div>
+            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-8 text-center text-white">
+                <h1 class="text-4xl font-bold mb-4">О нас</h1>
+                <div class="flex flex-row">
+                    <div class="max-w-2xl mx-auto text-left">
+                        <h3 class="text-2xl font-bold mb-4">Мы – автономная некоммерческая организация «Территория
+                            детства».</h3>
+                        <p class="mb-4">
+                            Мы организуем и участвуем в организации проектов, которые позиционируют детский отдых в
+                            загородных оздоровительных лагерях Хабаровского края.
+                        </p>
+                        <p>
+                            Наша задача объединить руководителей детских оздоровительных лагерей, чтобы вместе решать
+                            поставленные перед нами задачи и делать детский отдых ярким, интересным, познавательным для
+                            детей
+                            нашего края.
+                        </p>
+                    </div>
+                    <div class="text-left mx-auto">
+                        <h3 class="text-3xl font-bold mb-4">Сотрудничество:</h3>
+                        <ul>
+                            <li>КГБНОУ КДЦ «Созвездие»</li>
+                            <li>ЧУООД «Мир детства»</li>
+                            <li>АНО ОО «Изумрудный город»</li>
+                            <li>ДОЛ «Энергетик»</li>
+                            <li>МАУДО ДОЦ «Орбита»</li>
+                            <li>ДОЛ «Олимп»</li>
+                            <li>АНО ОО ДОЛ «Океан»</li>
+                            <li>ДОЛ «Буревестник»</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="container mx-auto px-4 py-8">
+            <section v-for="section in contentSections" :id="section.id" class="mb-16">
+                <h2 class="text-2xl font-bold mb-6 dark:text-dark-custom">{{ section.title }}</h2>
+                <div v-if="section.id === 'events'" class="grid md:grid-cols-2 gap-6">
+                    <div v-for="(event, index) in events.slice().reverse()" @click="openEventModal(event)"
+                         class="p-6 rounded-lg cursor-pointer transition hover:scale-[1.02] bg-custom-blue dark:bg-dark-custom">
+                        <img v-if="event.image" :src="event.image" class="w-full h-48 object-cover mb-4 rounded">
+                        <div class="font-bold mb-2 text-custom-emerald dark:text-dark-emerald">{{ event.date }}</div>
+                        <div class="line-clamp-4 dark:text-dark-custom">{{ truncateText(event.description, 200) }}</div>
+                    </div>
+                </div>
+                <div v-else-if="section.id === 'media'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div v-for="(item, index) in visibleMedia" @click="openGallery(index)"
+                         class="relative cursor-pointer group">
+                        <img v-if="item.type === 'image'" :src="item.src" class="w-full h-48 object-cover rounded">
+                        <video v-else :src="item.src" class="w-full h-48 object-cover rounded"></video>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition"></div>
+                    </div>
+                    <button v-if="media.length > 4 && !showAllMedia" @click="showAllMedia = true"
+                            class="col-span-full py-2 px-4 bg-custom-sky text-white rounded mx-auto">
+                        Показать ещё
+                    </button>
+                </div>
+                <div v-else class="p-6 rounded-lg bg-custom-blue dark:bg-dark-custom dark:text-dark-custom">
+                    {{ section.content }}
+                </div>
+            </section>
+        </main>
+
+        <div v-if="selectedEvent" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="max-w-2xl w-full p-6 rounded-lg bg-white dark:bg-dark-custom">
+                <div class="flex justify-between mb-4">
+                    <h3 class="text-xl font-bold text-custom-emerald dark:text-dark-emerald">{{ selectedEvent.date
+                        }}</h3>
+                    <button @click="selectedEvent = null" class="dark:text-dark-custom">✕</button>
+                </div>
+                <img v-if="selectedEvent.image" :src="selectedEvent.image"
+                     class="w-full h-64 object-cover mb-4 rounded">
+                <div class="whitespace-pre-line dark:text-dark-custom">{{ selectedEvent.description }}</div>
+            </div>
+        </div>
+
+        <div v-if="galleryVisible" class="fixed inset-0 gallery-overlay flex items-center justify-center z-[99]">
+            <button @click="closeGallery" class="absolute top-4 right-4 text-white text-4xl">×</button>
+            <button @click="prevMedia" class="absolute left-4 top-1/2 text-white text-4xl">‹</button>
+            <button @click="nextMedia" class="absolute right-4 top-1/2 text-white text-4xl">›</button>
+            <div class="w-full max-w-6xl p-4">
+                <img v-if="currentMedia.type === 'image'" :src="currentMedia.src"
+                     class="w-full max-h-[80vh] object-contain">
+                <video v-else :src="currentMedia.src" controls class="w-full aspect-ratio"></video>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const {createApp} = Vue;
+
+    createApp({
+        data() {
+            return {
+                isDarkTheme: false,
+                isMenuOpen: false,
+                showAllMedia: false,
+                selectedEvent: null,
+                galleryVisible: false,
+                currentMediaIndex: 0,
+                navItems: [
+                    {id: 'hero', title: 'О нас'},
+                    {id: 'events', title: 'События'},
+                    {id: 'media', title: 'Медиа'},
+                    {id: 'contacts', title: 'Контакты'}
+                ],
+                contentSections: [
+                    {id: 'events', title: 'События'},
+                    {id: 'media', title: 'Медиа'},
+                    {
+                        id: 'contacts',
+                        title: 'Контакты',
+                        content: 'Автономная некоммерческая организация отдыха и оздоровления «Территория детства» (АНО ОО «Территория детства»)\n' +
+                            '\n' +
+                            'Директор – Попков Максим Александрович, 8(962)584-84-01, эл.почта: mvdrussia18@gmail.com\n' +
+                            '\n' +
+                            'TG: https://t.me/territoria27detstva\n' +
+                            'ВК: https://vk.com/club211312608\n'
+                    }
+                ],
+                events: [
+                    {
+                        date: 'Февраль 2025г.',
+                        image: './img/media/ok0cSh2vpO0.jpg',
+                        description: 'Директор АНО «Территория детства» вошёл в состав экспертной комиссии открытого профориентационного конкурсного проекта «Педагогический старт – 2025». \n' +
+                            'Целью конкурсного проекта является выявление и поддержка талантливых детей и подростков в области педагогической деятельности.\n' +
+                            'По итогам конкурсного отбора было выявлено 15 команд педагогических классов Хабаровского края, которые станут участниками КПС «Педагогическая смена» в Краевом детском центре «Созвездие». \n' +
+                            'Желаем участникам успехов в освоении педагогических профессий!\n'
+                    },
+                    {
+                        date: 'Апрель 2025г.',
+                        image: './img/media/Y8JyAbIn9bE.jpg',
+                        description: 'АНО «Территория детства» выступит в роли партнёра проекта «Краевая школа подготовки вожатых», практический этап которой пройдёт с 25 апреля по 3 мая в Краевом детском центре «Созвездие». \n' +
+                            'Мы расскажем будущим вожатым Хабаровского края о принципах оформления отрядного пространства в детском лагере и проведём увлекательный дизайнерский практикум! \n' +
+                            'Ссылка на ТГ-канал Школы подготовки вожатых: https://t.me/shpvkhv'
+                    },
+                    {
+                        date: 'Апрель 2025г.',
+                        image: './img/media/XxHN_IdBMG8.jpg',
+                        description: 'АНО «Территория детства» выступит на ежегодном открытом обучающем семинаре-совещании по подготовке кадров для организаций отдыха и оздоровления детей и подростков «Архитекторы лета». \n' +
+                            'В рамках семинара, мы поделимся с коллегами своим профессиональным опытом и представим свою организацию. \n' +
+                            ' Ссылка на ТГ-канал: https://t.me/otdyh27khv'
+                    }
+                ],
+                media: [
+                    {type: 'image', src: './img/media/9QGEWR2dHGs.jpg', title: 'Мероприятие 1'},
+                    // {type: 'video', src: 'video1.mp4', title: 'Видео 1'},
+                    {type: 'image', src: './img/media/blproUo9VMA.jpg', title: 'Мероприятие 2'},
+                    {type: 'image', src: './img/media/ok0cSh2vpO0.jpg', title: 'Мероприятие 3'},
+                    {type: 'image', src: './img/media/vWgVV0-zQiU.jpg', title: 'Мероприятие 4'},
+                    {type: 'image', src: './img/media/XN_pYcK5O4g.jpg', title: 'Мероприятие 5'},
+                    {type: 'image', src: './img/media/XxHN_IdBMG8.jpg', title: 'Мероприятие 5'},
+                    {type: 'image', src: './img/media/Y8JyAbIn9bE.jpg', title: 'Мероприятие 5'},
+                ]
+            }
+        },
+        computed: {
+            visibleMedia() {
+                return this.showAllMedia ? this.media : this.media.slice(0, 4)
+            },
+            currentMedia() {
+                return this.media[this.currentMediaIndex]
+            }
+        },
+        methods: {
+            toggleTheme() {
+                this.isDarkTheme = !this.isDarkTheme
+            },
+            toggleMenu() {
+                this.isMenuOpen = !this.isMenuOpen
+            },
+            truncateText(text, maxLength) {
+                return text.length > maxLength ? text.slice(0, maxLength) + '...' : text
+            },
+            openEventModal(event) {
+                this.selectedEvent = event
+            },
+            openGallery(index) {
+                this.currentMediaIndex = index
+                this.galleryVisible = true
+            },
+            closeGallery() {
+                this.galleryVisible = false
+            },
+            prevMedia() {
+                this.currentMediaIndex = (this.currentMediaIndex - 1 + this.media.length) % this.media.length
+            },
+            nextMedia() {
+                this.currentMediaIndex = (this.currentMediaIndex + 1) % this.media.length
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
