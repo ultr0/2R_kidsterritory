@@ -49,16 +49,37 @@
         .aspect-ratio {
             aspect-ratio: 16/9;
         }
+
+        .wavy-border {
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .wavy-border::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 8'%3E%3Cpath fill='%23fff' d='M0 4c100-4 200 4 300 0s200-4 300 0 200 4 200 4H0z'/%3E%3C/ssvg%3E");
+            background-size: 800px 8px;
+            background-repeat: repeat-x;
+        }
+
+        .dark .wavy-border::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 8'%3E%3Cpath fill='%231e293b' d='M0 4c100-4 200 4 300 0s200-4 300 0 200 4 200 4H0z'/%3E%3C/svg%3E");
+        }
     </style>
 </head>
 <body>
 <div id="app" class="">
     <div :class="{ 'dark': isDarkTheme }">
-        <nav class="sticky top-0 z-[98] p-4 border-b bg-white dark:bg-dark-custom">
+        <nav class="sticky top-0 z-[98] p-4 mb-[160px] sm:mb-0 border-b bg-white dark:bg-dark-custom">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <img src="android-chrome-192x192.png" alt="Logo" class="h-10">
-                    <div class="text-xl font-bold dark:text-dark-custom">Территория детства</div>
+                    <div class="text-xl max-[316px]:text-sm font-bold dark:text-dark-custom">Территория детства</div>
                 </div>
                 <ul class="hidden md:flex space-x-6">
                     <li v-for="(item, index) in navItems" :key="index">
@@ -67,35 +88,49 @@
                     </li>
                 </ul>
                 <div class="flex items-center space-x-4">
-                    <a href="https://vk.com/club211312608" class="hover:opacity-80 text-2xl" title="Группа в ВК"><i
-                            class="fa-brands fa-vk"></i></a>
-                    <a href="https://t.me/territoria27detstva" class="hover:opacity-80 text-2xl" title="Канал в ТГ"><i
-                            class="fa-brands fa-telegram"></i></a>
-                    <a href="mailto:mvdrussia18@gmail.com" class="hover:opacity-80 text-2xl"
+                    <a href="https://vk.com/club211312608"
+                       class="hidden min-[350px]:block hover:opacity-80 text-2xl"
+                       title="Группа в ВК"><i class="fa-brands fa-vk"></i></a>
+                    <a href="https://t.me/territoria27detstva"
+                       class="hidden min-[420px]:block hover:opacity-80 text-2xl" title="Канал в ТГ">
+                        <i class="fa-brands fa-telegram"></i></a>
+                    <a href="mailto:mvdrussia18@gmail.com" class="hidden sm:block hover:opacity-80 text-2xl"
                        title="Написать нам e-mail"><i
                             class="fa-regular fa-envelope"></i></a>
                     <!--                    <button @click="toggleTheme" class="p-2 rounded-full dark:text-dark-custom text-xl">-->
                     <!--                        <i :class="isDarkTheme ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"></i>-->
                     <!--                    </button>-->
-                    <!--                    <button @click="toggleMenu" class="md:hidden dark:text-dark-custom text-xl">-->
-                    <!--                        <i class="fa-solid fa-bars"></i>-->
-                    <!--                    </button>-->
+                    <button @click="toggleMenu" class="md:hidden dark:text-dark-custom text-xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
             </div>
-            <div v-show="isMenuOpen" class="md:hidden absolute w-full bg-white dark:bg-dark-custom z-10">
+            <div v-show="isMenuOpen" class="absolute right-0 md:hidden absolute w-[50%] bg-white dark:bg-dark-custom z-10">
                 <ul class="py-4">
                     <li v-for="(item, index) in navItems" :key="index" class="py-2 px-4">
                         <a :href="'#'+item.id" class="block hover:opacity-80 dark:text-dark-custom">{{ item.title }}</a>
+                    </li>
+                    <li class="py-2 px-4 flex-inline items-center space-x-4">
+                        <a href="https://vk.com/club211312608"
+                           class=" max-[300px]:block  hover:opacity-80 text-2xl" target="_blank" title="Группа в ВК"><i
+                                class="fa-brands fa-vk"></i></a>
+                        <a href="https://t.me/territoria27detstva"
+                           class=" max-[300px]:block hover:opacity-80 text-2xl" target="_blank" title="Канал в ТГ"><i
+                                class="fa-brands fa-telegram"></i></a>
+                        <a href="mailto:mvdrussia18@gmail.com"
+                           class="  max-[300px]:block hover:opacity-80 text-2xl"
+                           title="Написать нам e-mail"><i
+                                class="fa-regular fa-envelope"></i></a>
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <section id="hero" class="relative h-[600px]">
+        <section id="hero" class="relative h-[600px] wavy-border">
             <div class="absolute inset-0 bg-[url('./img/hero.png')] bg-cover bg-center opacity-50 blur-sm"></div>
             <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-8 text-center text-white">
                 <h1 class="text-4xl font-bold mb-4">О нас</h1>
-                <div class="flex flex-row">
+                <div class="flex flex-row flex-wrap">
                     <div class="max-w-2xl mx-auto text-left">
                         <h3 class="text-2xl font-bold mb-4">Мы – автономная некоммерческая организация «Территория
                             детства».</h3>
@@ -110,7 +145,7 @@
                             нашего края.
                         </p>
                     </div>
-                    <div class="text-left mx-auto">
+                    <div class="text-left md:mx-auto">
                         <h3 class="text-3xl font-bold mb-4">Сотрудничество:</h3>
                         <ul>
                             <li>КГБНОУ КДЦ «Созвездие»</li>
@@ -130,12 +165,16 @@
         <main class="container mx-auto px-4 py-8">
             <section v-for="section in contentSections" :id="section.id" class="mb-16">
                 <h2 class="text-2xl font-bold mb-6 dark:text-dark-custom">{{ section.title }}</h2>
-                <div v-if="section.id === 'events'" class="grid md:grid-cols-2 gap-6">
+                <div v-if="section.id === 'events'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div v-for="(event, index) in events.slice().reverse()" @click="openEventModal(event)"
-                         class="p-6 rounded-lg cursor-pointer transition hover:scale-[1.02] bg-custom-blue dark:bg-dark-custom">
+                         class="rounded-lg cursor-pointer transition hover:scale-[1.02] bg-custom-blue dark:bg-dark-custom">
                         <img v-if="event.image" :src="event.image" class="w-full h-48 object-cover mb-4 rounded">
-                        <div class="font-bold mb-2 text-custom-emerald dark:text-dark-emerald">{{ event.date }}</div>
-                        <div class="line-clamp-4 dark:text-dark-custom">{{ truncateText(event.description, 200) }}</div>
+                        <div class="p-3">
+                            <div class="font-bold mb-2 text-custom-emerald dark:text-dark-emerald">{{ event.date }}
+                            </div>
+                            <div class="line-clamp-4 dark:text-dark-custom">{{ truncateText(event.description, 200) }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div v-else-if="section.id === 'media'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -156,8 +195,9 @@
             </section>
         </main>
 
-        <div v-if="selectedEvent" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-            <div class="max-w-2xl w-full p-6 rounded-lg bg-white dark:bg-dark-custom">
+        <div v-if="selectedEvent"
+             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-3 z-[99] overflow-y-auto">
+            <div class="max-[380px]:mt-[11rem] max-w-2xl w-full p-3 rounded-lg bg-white dark:bg-dark-custom">
                 <div class="flex justify-between mb-4">
                     <h3 class="text-xl font-bold text-custom-emerald dark:text-dark-emerald">{{ selectedEvent.date
                         }}</h3>
