@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<html lang="ru" xmlns="http://www.w3.org/1999/html" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АНО «Территория детства»</title>
+    <meta name="description" content="Автономная некоммерческая организация, занимающаяся организацией детского отдыха в Хабаровском крае">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://территория-детства27.рф/">
+    <meta property="og:title" content="АНО «Территория детства»">
+    <meta property="og:description" content="Организация детского отдыха в загородных лагерях Хабаровского края">
+    <meta property="og:image" content="https://территория-детства27.рф/img/hero.webp">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ваш-сайт.ru/">
+    <meta property="twitter:title" content="АНО «Территория детства»">
+    <meta property="twitter:description" content="Организация детского отдыха в загородных лагерях Хабаровского края">
+    <meta property="twitter:image" content="https://территория-детства27.рф/img/hero.webp">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="./src/style.prod.css">
+
+    <!--    <script src="https://cdn.tailwindcss.com"></script>-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -75,10 +93,10 @@
 <body>
 <div id="app" class="">
     <div :class="{ 'dark': isDarkTheme }">
-        <nav class="sticky top-0 z-[98] p-4 mb-[160px] sm:mb-0 border-b bg-white dark:bg-dark-custom">
+        <nav class="sticky top-0 z-[98] p-4 mb-[160px] sm:mb-0 text-teal-800 bg-white dark:bg-dark-custom">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-4">
-                    <img src="android-chrome-192x192.png" alt="Logo" class="h-10">
+                    <img src="android-chrome-192x192.png" alt="Logo" class="h-10" loading="lazy">
                     <div class="text-xl max-[316px]:text-sm font-bold dark:text-dark-custom">Территория детства</div>
                 </div>
                 <ul class="hidden md:flex space-x-6">
@@ -89,12 +107,12 @@
                 </ul>
                 <div class="flex items-center space-x-4">
                     <a href="https://vk.com/club211312608"
-                       class="hidden min-[350px]:block hover:opacity-80 text-2xl"
+                       class="hidden min-[350px]:block hover:opacity-60 text-2xl"
                        title="Группа в ВК"><i class="fa-brands fa-vk"></i></a>
                     <a href="https://t.me/territoria27detstva"
-                       class="hidden min-[420px]:block hover:opacity-80 text-2xl" title="Канал в ТГ">
+                       class="hidden min-[420px]:block hover:opacity-60 text-2xl" title="Канал в ТГ">
                         <i class="fa-brands fa-telegram"></i></a>
-                    <a href="mailto:mvdrussia18@gmail.com" class="hidden sm:block hover:opacity-80 text-2xl"
+                    <a href="mailto:mvdrussia18@gmail.com" class="hidden sm:block hover:opacity-60 text-2xl"
                        title="Написать нам e-mail"><i
                             class="fa-regular fa-envelope"></i></a>
                     <!--                    <button @click="toggleTheme" class="p-2 rounded-full dark:text-dark-custom text-xl">-->
@@ -105,20 +123,21 @@
                     </button>
                 </div>
             </div>
-            <div v-show="isMenuOpen" class="absolute right-0 md:hidden absolute w-[50%] bg-white dark:bg-dark-custom z-10">
+            <div v-show="isMenuOpen"
+                 class="absolute right-0 md:hidden absolute w-[50%] bg-white dark:bg-dark-custom z-10">
                 <ul class="py-4">
                     <li v-for="(item, index) in navItems" :key="index" class="py-2 px-4">
                         <a :href="'#'+item.id" class="block hover:opacity-80 dark:text-dark-custom">{{ item.title }}</a>
                     </li>
                     <li class="py-2 px-4 flex-inline items-center space-x-4">
                         <a href="https://vk.com/club211312608"
-                           class=" max-[300px]:block  hover:opacity-80 text-2xl" target="_blank" title="Группа в ВК"><i
+                           class=" max-[300px]:block  hover:opacity-60 text-2xl" target="_blank" title="Группа в ВК"><i
                                 class="fa-brands fa-vk"></i></a>
                         <a href="https://t.me/territoria27detstva"
-                           class=" max-[300px]:block hover:opacity-80 text-2xl" target="_blank" title="Канал в ТГ"><i
+                           class=" max-[300px]:block hover:opacity-60 text-2xl" target="_blank" title="Канал в ТГ"><i
                                 class="fa-brands fa-telegram"></i></a>
                         <a href="mailto:mvdrussia18@gmail.com"
-                           class="  max-[300px]:block hover:opacity-80 text-2xl"
+                           class="  max-[300px]:block hover:opacity-60 text-2xl"
                            title="Написать нам e-mail"><i
                                 class="fa-regular fa-envelope"></i></a>
                     </li>
@@ -127,8 +146,8 @@
         </nav>
 
         <section id="hero" class="relative h-[600px] wavy-border">
-            <div class="absolute inset-0 bg-[url('./img/hero.png')] bg-cover bg-center opacity-50 blur-sm"></div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-8 text-center text-white">
+            <div class="absolute inset-0 bg-[url('../img/hero.webp')] bg-cover bg-center opacity-50 blur-sm"></div>
+            <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-8 text-center text-white">
                 <h1 class="text-4xl font-bold mb-4">О нас</h1>
                 <div class="flex flex-row flex-wrap">
                     <div class="max-w-2xl mx-auto text-left">
@@ -164,15 +183,16 @@
 
         <main class="container mx-auto px-4 py-8">
             <section v-for="section in contentSections" :id="section.id" class="mb-16">
-                <h2 class="text-2xl font-bold mb-6 dark:text-dark-custom">{{ section.title }}</h2>
+                <h2 class="text-2xl font-bold mb-6 text-teal-800 dark:text-dark-custom">{{ section.title }}</h2>
                 <div v-if="section.id === 'events'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div v-for="(event, index) in events.slice().reverse()" @click="openEventModal(event)"
                          class="rounded-lg cursor-pointer transition hover:scale-[1.02] bg-custom-blue dark:bg-dark-custom">
-                        <img v-if="event.image" :src="event.image" class="w-full h-48 object-cover mb-4 rounded">
+                        <img v-if="event.image" :src="event.image" class="w-full h-48 object-cover mb-4 rounded" loading="lazy">
                         <div class="p-3">
-                            <div class="font-bold mb-2 text-custom-emerald dark:text-dark-emerald">{{ event.date }}
+                            <div class="font-bold mb-2 text-teal-800 dark:text-teal-300">{{ event.date }}
                             </div>
-                            <div class="line-clamp-4 dark:text-dark-custom">{{ truncateText(event.description, 200) }}
+                            <div class="line-clamp-4 text-teal-950 dark:text-dark-custom">
+                                {{ truncateText(event.description, 200) }}
                             </div>
                         </div>
                     </div>
@@ -180,12 +200,12 @@
                 <div v-else-if="section.id === 'media'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div v-for="(item, index) in visibleMedia" @click="openGallery(index)"
                          class="relative cursor-pointer group">
-                        <img v-if="item.type === 'image'" :src="item.src" class="w-full h-48 object-cover rounded">
+                        <img v-if="item.type === 'image'" :src="item.src" class="w-full h-48 object-cover rounded" loading="lazy">
                         <video v-else :src="item.src" class="w-full h-48 object-cover rounded"></video>
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition"></div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:opacity-50 transition"></div>
                     </div>
-                    <button v-if="media.length > 4 && !showAllMedia" @click="showAllMedia = true"
-                            class="col-span-full py-2 px-4 bg-custom-sky text-white rounded mx-auto">
+                    <button type="button" v-if="media.length > 4 && !showAllMedia" @click="showAllMedia = true"
+                            class="col-span-full py-2 px-4 bg-teal-500 hover:bg-teal-700 text-white rounded-sm mx-auto">
                         Показать ещё
                     </button>
                 </div>
@@ -194,18 +214,23 @@
                 </div>
             </section>
         </main>
+        <footer class="container  mx-auto px-4 py-8 flex flex-wrap flex-row justify-between text-teal-600 dark:text-teal-400">
+            <div>АНО ОО «Территория детства» &copy; 2025 г.</div>
+            <div><a href="https://2rom.ru" target="_blank" title="Сделано студией 2ром">2ром</a></div>
+        </footer>
 
         <div v-if="selectedEvent"
-             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-3 z-[99] overflow-y-auto">
+             class="fixed inset-0 bg-black/50 flex items-center justify-center p-3 z-[99] overflow-y-auto">
             <div class="max-[380px]:mt-[11rem] max-w-2xl w-full p-3 rounded-lg bg-white dark:bg-dark-custom">
                 <div class="flex justify-between mb-4">
-                    <h3 class="text-xl font-bold text-custom-emerald dark:text-dark-emerald">{{ selectedEvent.date
+                    <h3 class="text-xl font-bold  text-teal-800 dark:text-dark-emerald">{{ selectedEvent.date
                         }}</h3>
-                    <button @click="selectedEvent = null" class="dark:text-dark-custom">✕</button>
+                    <button @click="selectedEvent = null" class="text-teal-900 dark:text-dark-custom">✕</button>
                 </div>
                 <img v-if="selectedEvent.image" :src="selectedEvent.image"
-                     class="w-full h-64 object-cover mb-4 rounded">
-                <div class="whitespace-pre-line dark:text-dark-custom">{{ selectedEvent.description }}</div>
+                     class="w-full h-64 object-cover mb-4 rounded" loading="lazy">
+                <div class="whitespace-pre-line  text-teal-950 dark:text-dark-custom">{{ selectedEvent.description }}
+                </div>
             </div>
         </div>
 
@@ -215,7 +240,7 @@
             <button @click="nextMedia" class="absolute right-4 top-1/2 text-white text-4xl">›</button>
             <div class="w-full max-w-6xl p-4">
                 <img v-if="currentMedia.type === 'image'" :src="currentMedia.src"
-                     class="w-full max-h-[80vh] object-contain">
+                     class="w-full max-h-[80vh] object-contain" loading="lazy">
                 <video v-else :src="currentMedia.src" controls class="w-full aspect-ratio"></video>
             </div>
         </div>
@@ -256,7 +281,7 @@
                 events: [
                     {
                         date: 'Февраль 2025г.',
-                        image: './img/media/ok0cSh2vpO0.jpg',
+                        image: './img/media/ok0cSh2vpO0.webp',
                         description: 'Директор АНО «Территория детства» вошёл в состав экспертной комиссии открытого профориентационного конкурсного проекта «Педагогический старт – 2025». \n' +
                             'Целью конкурсного проекта является выявление и поддержка талантливых детей и подростков в области педагогической деятельности.\n' +
                             'По итогам конкурсного отбора было выявлено 15 команд педагогических классов Хабаровского края, которые станут участниками КПС «Педагогическая смена» в Краевом детском центре «Созвездие». \n' +
@@ -264,28 +289,28 @@
                     },
                     {
                         date: 'Апрель 2025г.',
-                        image: './img/media/Y8JyAbIn9bE.jpg',
+                        image: './img/media/Y8JyAbIn9bE.webp',
                         description: 'АНО «Территория детства» выступит в роли партнёра проекта «Краевая школа подготовки вожатых», практический этап которой пройдёт с 25 апреля по 3 мая в Краевом детском центре «Созвездие». \n' +
                             'Мы расскажем будущим вожатым Хабаровского края о принципах оформления отрядного пространства в детском лагере и проведём увлекательный дизайнерский практикум! \n' +
                             'Ссылка на ТГ-канал Школы подготовки вожатых: https://t.me/shpvkhv'
                     },
                     {
                         date: 'Апрель 2025г.',
-                        image: './img/media/XxHN_IdBMG8.jpg',
+                        image: './img/media/XxHN_IdBMG8.webp',
                         description: 'АНО «Территория детства» выступит на ежегодном открытом обучающем семинаре-совещании по подготовке кадров для организаций отдыха и оздоровления детей и подростков «Архитекторы лета». \n' +
                             'В рамках семинара, мы поделимся с коллегами своим профессиональным опытом и представим свою организацию. \n' +
                             ' Ссылка на ТГ-канал: https://t.me/otdyh27khv'
                     }
                 ],
                 media: [
-                    {type: 'image', src: './img/media/9QGEWR2dHGs.jpg', title: 'Мероприятие 1'},
+                    {type: 'image', src: './img/media/9QGEWR2dHGs.webp', title: 'Мероприятие 1'},
                     // {type: 'video', src: 'video1.mp4', title: 'Видео 1'},
-                    {type: 'image', src: './img/media/blproUo9VMA.jpg', title: 'Мероприятие 2'},
-                    {type: 'image', src: './img/media/ok0cSh2vpO0.jpg', title: 'Мероприятие 3'},
-                    {type: 'image', src: './img/media/vWgVV0-zQiU.jpg', title: 'Мероприятие 4'},
-                    {type: 'image', src: './img/media/XN_pYcK5O4g.jpg', title: 'Мероприятие 5'},
-                    {type: 'image', src: './img/media/XxHN_IdBMG8.jpg', title: 'Мероприятие 5'},
-                    {type: 'image', src: './img/media/Y8JyAbIn9bE.jpg', title: 'Мероприятие 5'},
+                    {type: 'image', src: './img/media/blproUo9VMA.webp', title: 'Мероприятие 2'},
+                    {type: 'image', src: './img/media/ok0cSh2vpO0.webp', title: 'Мероприятие 3'},
+                    {type: 'image', src: './img/media/vWgVV0-zQiU.webp', title: 'Мероприятие 4'},
+                    {type: 'image', src: './img/media/XN_pYcK5O4g.webp', title: 'Мероприятие 5'},
+                    {type: 'image', src: './img/media/XxHN_IdBMG8.webp', title: 'Мероприятие 5'},
+                    {type: 'image', src: './img/media/Y8JyAbIn9bE.webp', title: 'Мероприятие 5'},
                 ]
             }
         },
