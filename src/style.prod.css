@@ -6,7 +6,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-teal-200: oklch(0.91 0.096 180.426);
     --color-teal-300: oklch(0.855 0.138 181.071);
     --color-teal-400: oklch(0.777 0.152 181.912);
     --color-teal-500: oklch(0.704 0.14 182.503);
@@ -15,9 +14,6 @@
     --color-teal-800: oklch(0.437 0.078 188.216);
     --color-teal-900: oklch(0.386 0.063 188.416);
     --color-teal-950: oklch(0.277 0.046 192.524);
-    --color-cyan-700: oklch(0.52 0.105 223.128);
-    --color-sky-500: oklch(0.685 0.169 237.323);
-    --color-sky-700: oklch(0.5 0.134 242.749);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -33,6 +29,7 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
+    --font-weight-medium: 500;
     --font-weight-bold: 700;
     --radius-sm: 0.25rem;
     --radius-lg: 0.5rem;
@@ -213,6 +210,9 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
+  .top-1 {
+    top: calc(var(--spacing) * 1);
+  }
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
@@ -300,6 +300,9 @@
   .hidden {
     display: none;
   }
+  .table {
+    display: table;
+  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -327,17 +330,20 @@
   .max-w-6xl {
     max-width: var(--container-6xl);
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
   }
   .cursor-pointer {
     cursor: pointer;
   }
+  .resize {
+    resize: both;
+  }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .flex-col {
-    flex-direction: column;
   }
   .flex-row {
     flex-direction: row;
@@ -347,9 +353,6 @@
   }
   .items-center {
     align-items: center;
-  }
-  .justify-around {
-    justify-content: space-around;
   }
   .justify-between {
     justify-content: space-between;
@@ -392,9 +395,9 @@
   .rounded-sm {
     border-radius: var(--radius-sm);
   }
-  .border-b {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
   }
   .bg-black {
     background-color: var(--color-black);
@@ -405,20 +408,20 @@
   .bg-black\/50 {
     background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
   }
-  .bg-sky-500 {
-    background-color: var(--color-sky-500);
-  }
   .bg-teal-500 {
     background-color: var(--color-teal-500);
+  }
+  .bg-teal-900 {
+    background-color: var(--color-teal-900);
+  }
+  .bg-teal-900\/50 {
+    background-color: color-mix(in oklab, var(--color-teal-900) 50%, transparent);
   }
   .bg-white {
     background-color: var(--color-white);
   }
   .bg-\[url\(\'\.\.\/img\/hero\.webp\'\)\] {
     background-image: url('../img/hero.webp');
-  }
-  .bg-\[url\(\'\.\/img\/hero\.webp\'\)\] {
-    background-image: url('./img/hero.webp');
   }
   .bg-cover {
     background-size: cover;
@@ -488,15 +491,6 @@
   .whitespace-pre-line {
     white-space: pre-line;
   }
-  .text-teal-500 {
-    color: var(--color-teal-500);
-  }
-  .text-teal-600 {
-    color: var(--color-teal-600);
-  }
-  .text-teal-700 {
-    color: var(--color-teal-700);
-  }
   .text-teal-800 {
     color: var(--color-teal-800);
   }
@@ -509,11 +503,21 @@
   .text-white {
     color: var(--color-white);
   }
+  .underline {
+    text-decoration-line: underline;
+  }
   .opacity-50 {
     opacity: 50%;
   }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
   .blur-sm {
     --tw-blur: blur(var(--blur-sm));
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .transition {
@@ -532,20 +536,6 @@
     &:hover {
       @media (hover: hover) {
         scale: 1.02;
-      }
-    }
-  }
-  .hover\:bg-cyan-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-cyan-700);
-      }
-    }
-  }
-  .hover\:bg-sky-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-sky-700);
       }
     }
   }
@@ -641,19 +631,37 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
-  .dark\:text-teal-200 {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-teal-200);
-    }
-  }
   .dark\:text-teal-300 {
     @media (prefers-color-scheme: dark) {
       color: var(--color-teal-300);
     }
   }
-  .dark\:text-teal-400 {
+  .dark\:text-teal-500 {
     @media (prefers-color-scheme: dark) {
-      color: var(--color-teal-400);
+      color: var(--color-teal-500);
+    }
+  }
+  .\[\&_a\]\:font-medium {
+    & a {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+  .\[\&_a\]\:text-teal-600 {
+    & a {
+      color: var(--color-teal-600);
+    }
+  }
+  .\[\&_a\]\:dark\:text-teal-400 {
+    & a {
+      @media (prefers-color-scheme: dark) {
+        color: var(--color-teal-400);
+      }
+    }
+  }
+  .\[\&_a\:hover\]\:text-teal-800 {
+    & a:hover {
+      color: var(--color-teal-800);
     }
   }
 }
@@ -695,6 +703,11 @@
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-blur {
   syntax: "*";

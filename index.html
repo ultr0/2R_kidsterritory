@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АНО «Территория детства»</title>
-    <meta name="description" content="Автономная некоммерческая организация, занимающаяся организацией детского отдыха в Хабаровском крае">
+    <meta name="description"
+          content="Автономная некоммерческая организация, занимающаяся организацией детского отдыха в Хабаровском крае">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://территория-детства27.рф/">
+    <meta property="og:url" content="https://xn---27-6cdjlfcya9dwaactfegb8w.xn--p1ai/">
     <meta property="og:title" content="АНО «Территория детства»">
     <meta property="og:description" content="Организация детского отдыха в загородных лагерях Хабаровского края">
-    <meta property="og:image" content="https://территория-детства27.рф/img/hero.webp">
+    <meta property="og:image" content="https://xn---27-6cdjlfcya9dwaactfegb8w.xn--p1ai/img/hero.webp">
 
-    <!-- Twitter Card -->
+    <!--Card -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ваш-сайт.ru/">
+    <meta property="twitter:url" content="https://xn---27-6cdjlfcya9dwaactfegb8w.xn--p1ai/">
     <meta property="twitter:title" content="АНО «Территория детства»">
     <meta property="twitter:description" content="Организация детского отдыха в загородных лагерях Хабаровского края">
-    <meta property="twitter:image" content="https://территория-детства27.рф/img/hero.webp">
+    <meta property="twitter:image" content="https://xn---27-6cdjlfcya9dwaactfegb8w.xn--p1ai/img/hero.webp">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,11 +27,28 @@
     <link rel="manifest" href="/site.webmanifest">
     <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"></script>
     <link rel="stylesheet" type="text/css" href="./src/style.prod.css">
-
-    <!--    <script src="https://cdn.tailwindcss.com"></script>-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300;400;500;600;700&display=swap"
+    <!--    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300;400;500;600;700&display=swap"-->
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript"> (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(100479051, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/100479051" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript> <!-- /Yandex.Metrika counter -->
+
     <style>
         .bg-custom-blue {
             background-color: #e0f2fe;
@@ -147,7 +165,7 @@
 
         <section id="hero" class="relative h-[600px] wavy-border">
             <div class="absolute inset-0 bg-[url('../img/hero.webp')] bg-cover bg-center opacity-50 blur-sm"></div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-8 text-center text-white">
+            <div class="absolute bottom-0 left-0 right-0 bg-teal-900/50 p-8 text-center text-white">
                 <h1 class="text-4xl font-bold mb-4">О нас</h1>
                 <div class="flex flex-row flex-wrap">
                     <div class="max-w-2xl mx-auto text-left">
@@ -187,7 +205,8 @@
                 <div v-if="section.id === 'events'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div v-for="(event, index) in events.slice().reverse()" @click="openEventModal(event)"
                          class="rounded-lg cursor-pointer transition hover:scale-[1.02] bg-custom-blue dark:bg-dark-custom">
-                        <img v-if="event.image" :src="event.image" class="w-full h-48 object-cover mb-4 rounded" loading="lazy">
+                        <img v-if="event.image" :src="event.image" class="w-full h-48 object-cover mb-4 rounded"
+                             loading="lazy">
                         <div class="p-3">
                             <div class="font-bold mb-2 text-teal-800 dark:text-teal-300">{{ event.date }}
                             </div>
@@ -200,7 +219,8 @@
                 <div v-else-if="section.id === 'media'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div v-for="(item, index) in visibleMedia" @click="openGallery(index)"
                          class="relative cursor-pointer group">
-                        <img v-if="item.type === 'image'" :src="item.src" class="w-full h-48 object-cover rounded" loading="lazy">
+                        <img v-if="item.type === 'image'" :src="item.src" class="w-full h-48 object-cover rounded"
+                             loading="lazy">
                         <video v-else :src="item.src" class="w-full h-48 object-cover rounded"></video>
                         <div class="absolute inset-0 bg-black/0 group-hover:opacity-50 transition"></div>
                     </div>
@@ -209,12 +229,13 @@
                         Показать ещё
                     </button>
                 </div>
-                <div v-else class="p-6 rounded-lg bg-custom-blue dark:bg-dark-custom dark:text-dark-custom">
-                    {{ section.content }}
+                <div v-else
+                     class="whitespace-pre-line p-6 rounded-lg bg-custom-blue dark:bg-dark-custom dark:text-dark-custom  [&_a]:font-medium [&_a]:text-teal-600 [&_a]:dark:text-teal-400 [&_a:hover]:text-teal-800"
+                     v-html="section.content">
                 </div>
             </section>
         </main>
-        <footer class="container  mx-auto px-4 py-8 flex flex-wrap flex-row justify-between text-teal-600 dark:text-teal-400">
+        <footer class="container  mx-auto px-4 py-8 flex flex-wrap flex-row justify-between text-teal-800 dark:text-teal-500 [&_a]:font-medium [&_a]:text-teal-600 [&_a]:dark:text-teal-400 [&_a:hover]:text-teal-800">
             <div>АНО ОО «Территория детства» &copy; 2025 г.</div>
             <div><a href="https://2rom.ru" target="_blank" title="Сделано студией 2ром">2ром</a></div>
         </footer>
@@ -270,12 +291,11 @@
                     {
                         id: 'contacts',
                         title: 'Контакты',
-                        content: 'Автономная некоммерческая организация отдыха и оздоровления «Территория детства» (АНО ОО «Территория детства»)\n' +
-                            '\n' +
-                            'Директор – Попков Максим Александрович, 8(962)584-84-01, эл.почта: mvdrussia18@gmail.com\n' +
-                            '\n' +
-                            'TG: https://t.me/territoria27detstva\n' +
-                            'ВК: https://vk.com/club211312608\n'
+                        content: 'Автономная некоммерческая организация отдыха и оздоровления «Территория детства» (АНО ОО «Территория детства»). \n' +
+                            '<a href="/files/docs.pdf">Свидетельство о регистрации ОГРН&nbsp;&numero;1152700001145 от 30 сентября 2015г.</a> \n\n' +
+                            'Директор – Попков Максим Александрович, <a href="tel:+79625848401" title="Позвонить">8(962)584-84-01</a>, эл.почта: <a href="mailto:mvdrussia18@gmail.com">mvdrussia18@gmail.com</a> \n\n' +
+                            'TG: <a href="https://t.me/territoria27detstva">https://t.me/territoria27detstva</a> \n' +
+                            'ВК: <a href="https://vk.com/club211312608">https://vk.com/club211312608</a> \n'
                     }
                 ],
                 events: [
